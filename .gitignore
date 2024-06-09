@@ -1,0 +1,19 @@
+# Ignore the virtual environment folder
+/venv/
+
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore logs and temporary files
+*.log
+*.swp
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+.vscode
+
+# Ignore browser-specific files
+drivers/peofile
+
