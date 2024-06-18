@@ -12,8 +12,13 @@ from pages.profile_page import main_code_1
 #     main()
  
 def main():
+<<<<<<< HEAD
     
     code = main_code_1()
+=======
+    for i in range(10000):
+        code = main_code()
+>>>>>>> 025cb3b0b086815b5835e7e1f8f5ff3d2916fd6d
       
 if __name__ == '__main__':
     main()
