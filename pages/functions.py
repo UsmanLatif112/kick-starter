@@ -109,8 +109,28 @@ def is_url_in_csv(url, csv_filename):
         open(csv_filename, 'a', newline='', encoding='utf-8').close()  # Create file if it does not exist
     return False
 
+csv_filee = 'D:\\my\\New folder\\kick starter\\Sent_messages.csv'
+
+# Check if URL is already in the CSV
+def is_url_in_csvv(url, csv_filename):
+    try:
+        with open(csv_filename, newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                if url in row:
+                    return True
+    except FileNotFoundError:
+        open(csv_filename, 'a', newline='', encoding='utf-8').close()  # Create file if it does not exist
+    return False
+
 # Save a new URL to the CSV
 def save_url_to_csv(url, csv_filename):
+    with open(csv_filename, 'a', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow([url])
+        
+# Save a new URL to the CSV
+def save_url_to_csvv(url, csv_filename):
     with open(csv_filename, 'a', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow([url])

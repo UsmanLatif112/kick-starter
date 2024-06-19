@@ -36,7 +36,7 @@ def get_undetected_chrome_browser(profile=None):
     if profile:
         options.user_data_dir = f"{BASE_DIR}/profile/{profile}"
         
-    driver_version = "126.0.6478.57"  # You can also specify a specific version here
+    driver_version = "126.0.6478.62"  # You can also specify a specific version here
     driver_path = ChromeDriverManager(driver_version=driver_version).install()
     
     return uc.Chrome(options=options, executable_path=driver_path)

@@ -13,4 +13,7 @@ class ProfileResources:
     load_more_btn = '//*[@id="main_content"]//*[@class="load_more mt3"]/a[@class="bttn bttn-primary theme--create bttn-medium"]'
 
 
+class MessageResources:
+    See_More_btn = '//*[@id="content-wrap"]//*[@class="NS_projects__description_section m-auto"]//*[@class="col col-4 js-rewards-column max-w62 sticky-rewards"]//*[@class="pl1"][contains(normalize-space(), "See more")]'
+    
 
