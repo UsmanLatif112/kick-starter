@@ -15,5 +15,5 @@ class ProfileResources:
 
 class MessageResources:
     See_More_btn = '//*[@id="content-wrap"]//*[@class="NS_projects__description_section m-auto"]//*[@class="col col-4 js-rewards-column max-w62 sticky-rewards"]//*[@class="pl1"][contains(normalize-space(), "See more")]'
-    
-
+    Message_feild_dd = '//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"]//textarea[@placeholder="Type your message here"]'
+    Search_bar = '//*[@name="q"]'
