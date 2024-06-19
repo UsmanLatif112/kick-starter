@@ -15,5 +15,5 @@ Thumbs.db
 .vscode
 
 # Ignore browser-specific files
-drivers/profile
+drivers/peofile
 
