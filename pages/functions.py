@@ -205,3 +205,16 @@ def save_url_to_csvv_v(url, csv_filename):
     # time.sleep(2)
     # Usernamee = HomePage(driver)
     # Usernamee.enter_name_delay(ProfileResources.email_field, username)
+
+csv_filee_error = "D:\\my\\New folder\\kick starter\\error_message.csv"
+
+def is_url_in_csvv_error(url, csv_filename):
+    try:
+        with open(csv_filename, newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                if url in row:
+                    return True
+    except FileNotFoundError:
+        open(csv_filename, 'a', newline='', encoding='utf-8').close()  # Create file if it does not exist
+    return False

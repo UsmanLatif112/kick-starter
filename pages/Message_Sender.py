@@ -7,10 +7,14 @@ def main_code_message_sending():
     with open(csv_file_path, 'r') as file:
         reader = csv.reader(file)
         next(reader)
+        counter = 0
         for row in reader:
             try:
                 Project_Urls = row[0]
+                if not is_url_in_csvv_error(Project_Urls, csv_filee_error):
+                    print("Url not found in error message csv")
                 if not is_url_in_csvv(Project_Urls, csv_filee):
+                    print("Url not found in Sent message csv")
                     driver = get_undetected_chrome_browser('christoph')
                     driver.maximize_window()
                     driver.get("https://www.google.com/")
@@ -25,7 +29,7 @@ def main_code_message_sending():
                         time.sleep(1)
                         ActionChains(driver).send_keys(Keys.ENTER).perform()
                     except:
-                        print("searxh bar not found")
+                        print(f"searxh bar not found {Project_Urls}")
                         
                     gentle_human_like_scroll(driver, duration=5)
                     time.sleep(2)
@@ -48,8 +52,8 @@ def main_code_message_sending():
                         side_modall.wait(ProfileResources.side_modal)
                         side_modal_crosss = HomePage(driver)
                         side_modal_crosss.click_btn(ProfileResources.side_modal_cross)
-                    except Exception as e:
-                        print(e)
+                    except:
+                        print(f"Side modal not found {Project_Urls}")
                     time.sleep(2)
                     gentle_human_like_scroll(driver, duration=5)
                     time.sleep(2)
@@ -58,59 +62,79 @@ def main_code_message_sending():
                     try:
                         see_more_e = driver.find_element(By.XPATH,'//*[@id="content-wrap"]//*[@class="NS_projects__description_section m-auto"]//*[@class="col col-4 js-rewards-column max-w62 sticky-rewards"]//*[@class="pl1"][contains(normalize-space(), "See more")]')
                         time.sleep(2)
-                        ActionChains(driver).move_to_element(see_more_e).perform()
-                        time.sleep(1)
-                        see_more_e_e = HomePage(driver)
-                        see_more_e_e.click_btn(MessageResources.See_More_btn)
-                    except:
-                        print("see more button not found")
-                        continue
-                    try:
-                        modal_cancel_1 = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"][contains(normalize-space(), "About the creator")]',)))
-                        if modal_cancel_1:
-                            Contact_me = driver.find_element(By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"]//button[contains(normalize-space(), "Contact me")]')
-                            time.sleep(2)
-                            ActionChains(driver).move_to_element(Contact_me).perform()
-                            time.sleep(1)
-                            Contact_me.click()
-                            time.sleep(2)
+                        if see_more_e:
                             try:
-                                Message_feild = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"]//textarea[@placeholder="Type your message here"]',)))
-                                if Message_feild:
-                                    Message_feild.click()
-                                    time.sleep(2)
-                                    Message_feild_d = HomePage(driver)
-                                    messages = random.choice(messagess)
-                                    Message_feild_d.enter_name_delay(MessageResources.Message_feild_dd, messages)
-                                    time.sleep(2)
-                                    try:
-                                        Send_message = driver.find_element(By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"]//button[contains(normalize-space(), "Send Message")]')
+                                print("See more button found")
+                                time.sleep(2)
+                                ActionChains(driver).move_to_element(see_more_e).perform()
+                                time.sleep(1)
+                                see_more_e_e = HomePage(driver)
+                                see_more_e_e.click_btn(MessageResources.See_More_btn)
+                                try:
+                                    modal_cancel_1 = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"][contains(normalize-space(), "About the creator")]',)))
+                                    if modal_cancel_1:
+                                        Contact_me = driver.find_element(By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"]//button[contains(normalize-space(), "Contact me")]')
                                         time.sleep(2)
-                                        ActionChains(driver).move_to_element(Send_message).perform()
+                                        ActionChains(driver).move_to_element(Contact_me).perform()
+                                        time.sleep(1)
+                                        Contact_me.click()
                                         time.sleep(2)
-                                        Send_message.click()
-                                    except:
-                                        print("Sent messagebuton not found")
-                                    try:
-                                        Message_sent_pop = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH,'//*[@class="jGrowl-message"][contains(normalize-space(), "Your message has been sent!")]',)))
-                                        save_url_to_csvv (Project_Urls, csv_filee)
-                                    except:
-                                        print("message not sent") 
-                                        save_url_to_csvv_v (Project_Urls, csv_filee_e)    
+                                        try:
+                                            Message_feild = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"]//textarea[@placeholder="Type your message here"]',)))
+                                            if Message_feild:
+                                                Message_feild.click()
+                                                time.sleep(2)
+                                                Message_feild_d = HomePage(driver)
+                                                messages = random.choice(messagess)
+                                                Message_feild_d.enter_name_delay(MessageResources.Message_feild_dd, messages)
+                                                time.sleep(2)
+                                                try:
+                                                    Send_message = driver.find_element(By.XPATH,'//*[@id="content-wrap"]//*[@class="shadow-low p4 max-h70vh auto-scroll-y clip"]//button[contains(normalize-space(), "Send Message")]')
+                                                    time.sleep(2)
+                                                    ActionChains(driver).move_to_element(Send_message).perform()
+                                                    time.sleep(2)
+                                                    Send_message.click()
+                                                except:
+                                                    print(f"Sent messagebuton not found {Project_Urls}")
+                                                try:
+                                                    Message_sent_pop = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH,'//*[@class="jGrowl-message"][contains(normalize-space(), "Your message has been sent!")]',)))
+                                                    if Message_sent_pop:
+                                                        print(f"Message sent {Project_Urls}")
+                                                    save_url_to_csvv (Project_Urls, csv_filee)
+                                                except:
+                                                    print(f"message not sent {Project_Urls}") 
+                                                    save_url_to_csvv_v (Project_Urls, csv_filee_e)    
+                                        except:
+                                            print(f"error in message typing {Project_Urls}")
+                                except:
+                                    print(f"message modal not found {Project_Urls}")
+                                    save_url_to_csvv_v (Project_Urls, csv_filee_e)
+                                    save_url_to_csvv (Project_Urls, csv_filee)
+                                time.sleep(15)
+                                websitee = random.choice(websites)
+                                driver.get(websitee)
+                                time.sleep(2)
+                                gentle_human_like_scroll(driver, duration=5)
+                                time.sleep(2)
+                                random_mouse_movemen_t(3)
+                                time.sleep(2)
+                                driver.quit()
                             except:
-                                print("error in message typing")
+                                 print(f"see more button not found {Project_Urls}")
+                                 save_url_to_csvv_v ("See More button not found", Project_Urls, csv_filee_e)
+                                 save_url_to_csvv (Project_Urls,"See More button not found", csv_filee)
+                                 driver.quit()
                     except:
-                        print("message modal not found")       
-                    time.sleep(15)
-                    websitee = random.choice(websites)
-                    driver.get(websitee)
-                    time.sleep(2)
-                    gentle_human_like_scroll(driver, duration=5)
-                    time.sleep(2)
-                    random_mouse_movemen_t(3)
-                    time.sleep(2)
-                    driver.quit()
-            except Exception as e:
-                print(e)
-                save_url_to_csvv_v (Project_Urls, csv_filee_e)
-  
+                        print(f"see more button not found {Project_Urls}")      
+            except:
+                print(f"Error sensing message {Project_Urls}")
+                save_url_to_csvv_v ("Error sending message",Project_Urls, csv_filee_e)
+                save_url_to_csvv (Project_Urls,"Error sending message", csv_filee)
+                driver.quit()
+            
+            counter += 1  # Increment the counter
+            print(counter)
+            if counter % 10 == 0:
+                print("Waiting for 2 hours...")
+                time.sleep(7200)  # Wait for 1 hour (3600 seconds)
+                counter = 0
