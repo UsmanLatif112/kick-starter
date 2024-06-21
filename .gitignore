@@ -17,3 +17,4 @@ Thumbs.db
 # Ignore browser-specific files
 drivers/profile
 
+# taskkill /IM cmd.exe
