@@ -1,3 +1,18 @@
-2024/06/20-00:09:58.960 31a0 Reusing MANIFEST D:\my\New folder\kick starter\drivers\profile\christoph\Default\Local Storage\leveldb/MANIFEST-000001
-2024/06/20-00:09:58.975 31a0 Recovering log #52
-2024/06/20-00:09:58.980 31a0 Reusing old log D:\my\New folder\kick starter\drivers\profile\christoph\Default\Local Storage\leveldb/000052.log 
+2024/06/22-01:38:42.657 1bf8 Reusing MANIFEST D:\my\New folder\kick starter\drivers\profile\christoph\Default\Local Storage\leveldb/MANIFEST-000001
+2024/06/22-01:38:42.670 1bf8 Recovering log #77
+2024/06/22-01:38:42.673 1bf8 Reusing old log D:\my\New folder\kick starter\drivers\profile\christoph\Default\Local Storage\leveldb/000077.log 
+2024/06/22-01:39:50.110 1bf8 Level-0 table #81: started
+2024/06/22-01:39:50.121 1bf8 Level-0 table #81: 47814 bytes OK
+2024/06/22-01:39:50.123 1bf8 Delete type=0 #77
+2024/06/22-01:39:50.147 29b8 Compacting 4@0 + 1@1 files
+2024/06/22-01:39:50.178 29b8 Generated table #82@0: 550 keys, 513014 bytes
+2024/06/22-01:39:50.178 29b8 Compacted 4@0 + 1@1 files => 513014 bytes
+2024/06/22-01:39:50.179 29b8 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/06/22-01:39:50.181 29b8 Delete type=2 #69
+2024/06/22-01:39:50.181 29b8 Delete type=2 #72
+2024/06/22-01:39:50.181 29b8 Delete type=2 #75
+2024/06/22-01:39:50.181 29b8 Delete type=2 #78
+2024/06/22-01:39:50.182 29b8 Delete type=2 #81
+2024/06/22-01:48:01.558 29b8 Level-0 table #84: started
+2024/06/22-01:48:01.569 29b8 Level-0 table #84: 46502 bytes OK
+2024/06/22-01:48:01.572 29b8 Delete type=0 #80

@@ -2,7 +2,8 @@ from pages.Imports import *
 from pages.functions import *
 
 def main_code_message_sending():
-    csv_file_path = 'D:\\my\\New folder\\kick starter\\kickstarter_1800.csv'
+    # csv_file_path = 'D:\\my\\New folder\\kick starter\\kickstarter_1800.csv'
+    csv_file_path = 'C:\\Users\\Administrator\\Desktop\\New folder\\kick-starter\\kickstarter_projects.csv'
         
     with open(csv_file_path, 'r') as file:
         reader = csv.reader(file)
@@ -109,7 +110,6 @@ def main_code_message_sending():
                                 except:
                                     print(f"message modal not found {Project_Urls}")
                                     save_url_to_csvv_v (Project_Urls, csv_filee_e)
-                                    save_url_to_csvv (Project_Urls, csv_filee)
                                 time.sleep(15)
                                 websitee = random.choice(websites)
                                 driver.get(websitee)
@@ -121,19 +121,24 @@ def main_code_message_sending():
                                 driver.quit()
                             except:
                                  print(f"see more button not found {Project_Urls}")
-                                 save_url_to_csvv_v ("See More button not found", Project_Urls, csv_filee_e)
-                                 save_url_to_csvv (Project_Urls,"See More button not found", csv_filee)
+                                 save_url_to_csvv_v (Project_Urls, csv_filee_e)
                                  driver.quit()
+                        else:
+                            print(f"see more button not found {Project_Urls}")
+                            save_url_to_csvv_v (Project_Urls, csv_filee_e)
+                            driver.quit()
                     except:
-                        print(f"see more button not found {Project_Urls}")      
+                        print(f"see more button not found {Project_Urls}")
+                        save_url_to_csvv_v (Project_Urls, csv_filee_e)
+                        driver.quit()     
             except:
                 print(f"Error sensing message {Project_Urls}")
-                save_url_to_csvv_v ("Error sending message",Project_Urls, csv_filee_e)
-                save_url_to_csvv (Project_Urls,"Error sending message", csv_filee)
+                save_url_to_csvv_v (Project_Urls, csv_filee_e)
                 driver.quit()
             
             counter += 1  # Increment the counter
             print(counter)
+            time.sleep(30)
             if counter % 10 == 0:
                 print("Waiting for 2 hours...")
                 time.sleep(7200)  # Wait for 1 hour (3600 seconds)
